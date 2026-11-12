@@ -4,7 +4,7 @@ from generator.dates import get_quarter
 
 
 def test_today():
-    day = date(2026, 11, 12)
+    day = date.today()
     assert get_quarter(day) == 4
 
 
