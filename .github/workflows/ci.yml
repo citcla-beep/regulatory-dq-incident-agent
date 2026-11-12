@@ -1,0 +1,28 @@
+name: CI                          # label shown in the GitHub interface
+
+on:                               # events that start the workflow
+  pull_request:                   # any pull request
+  push:
+    branches: [main]              # pushes, but only on main
+
+jobs:
+  checks:                         # job id, you choose the name
+    runs-on: ubuntu-latest        # the virtual machine
+    steps:
+      - name: Check out the code  # ready-made action: downloads the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python         # ready-made action with a parameter
+        uses: actions/setup-python@v3.12
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies   # your own command
+        run: pip install -e '.[dev]'
+
+      - name: Run tests
+        run: python -m pytest
+      - name: Ruff check
+        run: ruff check .
+      - name: Ruff format 
+        run: ruff format --check .
