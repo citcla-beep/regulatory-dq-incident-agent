@@ -25,6 +25,5 @@ jobs:
 
       - name: Ruff format 
         run: ruff format --check .
-        
       - name: Run tests
         run: python -m pytest
