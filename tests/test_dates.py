@@ -3,8 +3,8 @@ from datetime import date
 from generator.dates import get_quarter
 
 
-def test_today():
-    day = date.today()
+def test_november():
+    day = date(2026, 11, 11)
     assert get_quarter(day) == 4
 
 
